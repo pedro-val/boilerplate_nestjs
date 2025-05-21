@@ -44,7 +44,11 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document, customOptions);
 
   // Habilitar CORS
-  app.enableCors();
+  app.enableCors({
+    origin: ['http://localhost:3000', 'https://4534-168-205-107-117.ngrok-free.app'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
 
   await app.listen(process.env.PORT ?? 3000);
 
