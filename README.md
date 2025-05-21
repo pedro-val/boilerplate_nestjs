@@ -77,26 +77,6 @@ docker-compose down
 - **api**: Servidor NestJS executando na porta 3000
 - **db**: Banco de dados PostgreSQL executando na porta 5432
 
-## Expondo a API para cliente de teste (ngrok)
-
-Para disponibilizar a API para clientes externos de teste, é possível usar o ngrok:
-
-1. Instale o ngrok:
-```bash
-npm install -g ngrok
-# Ou baixe do site: https://ngrok.com/download
-```
-
-2. Exponha a porta da API:
-```bash
-ngrok http 3000
-```
-
-3. Utilize a URL fornecida pelo ngrok para acessar a API e a documentação:
-```
-https://<id-gerado>.ngrok.io/api  # Para a documentação Swagger
-```
-
 ## Endpoints Principais
 
 - **Documentação Swagger**: `GET /api`
