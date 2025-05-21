@@ -2,15 +2,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { Request, Response } from 'express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  // Configuração CORS
+  // Configuração CORS global - mais permissiva para trabalhar com ngrok
   app.enableCors({
-    origin: true,
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Accept,Authorization,Origin,X-Requested-With',
+    exposedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   });
 
   const fullUrl =
@@ -32,7 +38,12 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
 
-  // Customizar as opções do Swagger UI
+  app.use('/api-json', (req: Request, res: Response) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.send(document);
+  });
+
   const customOptions = {
     swaggerOptions: {
       persistAuthorization: true,
@@ -40,19 +51,12 @@ async function bootstrap() {
       defaultModelsExpandDepth: 0,
       filter: true,
       showExtensions: true,
-      // Adicionar a configuração para usar a URL do host atual
-      urls: [
-        {
-          url: '',
-          name: 'Default',
-        },
-      ],
-      // Isso faz com que o Swagger use a URL base de onde está sendo acessado
+      yaml: false,
+      url: '/api-json',
       operationsSorter: 'alpha',
     },
     customSiteTitle: 'API Documentation',
     explorer: true,
-    // Isso é crucial para fazer o Swagger funcionar com ngrok
     useGlobalPrefix: true,
   };
 
@@ -62,6 +66,7 @@ async function bootstrap() {
 
   console.log(`Application is running on: ${await app.getUrl()}`);
   console.log(`Swagger documentation is available at: ${await app.getUrl()}/api`);
+  console.log(`OpenAPI JSON available at: ${await app.getUrl()}/api-json`);
 }
 
 bootstrap().catch(err => console.error('Failed to start application:', err));
