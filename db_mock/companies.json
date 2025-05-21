@@ -1,0 +1,63 @@
+[
+    {
+      "id": 1,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000001",
+      "name": "Tech Solutions Ltda",
+      "owner_id": 1
+    },
+    {
+      "id": 2,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000002",
+      "name": "Casa das Ferramentas",
+      "owner_id": 2
+    },
+    {
+      "id": 3,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000003",
+      "name": "Loja do Povo",
+      "owner_id": 3
+    },
+    {
+      "id": 4,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000004",
+      "name": "Agro Mais",
+      "owner_id": 4
+    },
+    {
+      "id": 5,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000005",
+      "name": "Maxi Farma",
+      "owner_id": 5
+    },
+    {
+      "id": 6,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000006",
+      "name": "Conecta Eletrônicos",
+      "owner_id": 6
+    },
+    {
+      "id": 7,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000007",
+      "name": "Super Moda",
+      "owner_id": 7
+    },
+    {
+      "id": 8,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000008",
+      "name": "Print Express",
+      "owner_id": 8
+    },
+    {
+      "id": 9,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000009",
+      "name": "Distribuidora Ideal",
+      "owner_id": 9
+    },
+    {
+      "id": 10,
+      "pid": "b1c2d3e4-f5a6-4110-bbcd-000000000010",
+      "name": "Auto Center RJ",
+      "owner_id": 10
+    }
+  ]
+  
